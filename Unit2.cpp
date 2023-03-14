@@ -36,7 +36,7 @@ void __fastcall Tlogin_menu::login_buttonClick(TObject *Sender){
 
 	examination.open(path);
 
-	if (!examination.is_open()) ShowMessage("Что-то с файлом");
+	if (!examination.is_open()) ShowMessage("Р§С‚Рѕ-С‚Рѕ СЃ С„Р°Р№Р»РѕРј");
 
 	else{
 		AnsiString text = "Login: " + this -> login -> Text + " | Password: " + this -> password -> Text;
@@ -62,10 +62,9 @@ void __fastcall Tlogin_menu::login_buttonClick(TObject *Sender){
 		}
 
 		else{
-			ShowMessage("Такого пользователя нет или неправильный пароль");
+			ShowMessage("РўР°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµС‚ РёР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїР°СЂРѕР»СЊ");
 		}
 
 	}   examination.close();
 }
 //---------------------------------------------------------------------------
-

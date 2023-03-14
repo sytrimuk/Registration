@@ -31,12 +31,12 @@ string username = getenv("username");
 string path = "C:\\Users\\" + username + "\\Documents\\All\\main.password";
 string line_txt = "";
 
-char arr_ru[33] = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ы', 'ъ', 'э', 'ю', 'я'};
-char arr_RU[33] = {'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ь', 'Ы', 'Ъ', 'Э', 'Ю', 'Я'};
+char arr_ru[33] = {'Р°', 'Р±', 'РІ', 'Рі', 'Рґ', 'Рµ', 'С‘', 'Р¶', 'Р·', 'Рё', 'Р№', 'Рє', 'Р»', 'Рј', 'РЅ', 'Рѕ', 'Рї', 'СЂ', 'СЃ', 'С‚', 'Сѓ', 'С„', 'С…', 'С†', 'С‡', 'С€', 'С‰', 'СЊ', 'С‹', 'СЉ', 'СЌ', 'СЋ', 'СЏ'};
+char arr_RU[33] = {'Рђ', 'Р‘', 'Р’', 'Р“', 'Р”', 'Р•', 'РЃ', 'Р–', 'Р—', 'Р', 'Р™', 'Рљ', 'Р›', 'Рњ', 'Рќ', 'Рћ', 'Рџ', 'Р ', 'РЎ', 'Рў', 'РЈ', 'Р¤', 'РҐ', 'Р¦', 'Р§', 'РЁ', 'Р©', 'Р¬', 'Р«', 'РЄ', 'Р­', 'Р®', 'РЇ'};
 
 //---------------------------------------------------------------------------
 void __fastcall Tregistration_menu::registration_buttonClick(TObject *Sender){
-	//переменные
+	//РїРµСЂРµРјРµРЅРЅС‹Рµ
 	bool check_txt = true;
 	bool check_RU_in_l = false;
 	bool check_RU_in_p = false;
@@ -47,7 +47,7 @@ void __fastcall Tregistration_menu::registration_buttonClick(TObject *Sender){
 	char* login_c = str_to_char(login);
 	char* password_c = str_to_char(password);
 
-	//поиск Кириллицы
+	//РїРѕРёСЃРє РљРёСЂРёР»Р»РёС†С‹
 	for (int i = 0; i < this -> login -> Text.Length(); i++) {
 		for (int j = 0; j < 33; j++) {
 			if (login_c[i] == arr_ru[j] || login_c[i] == arr_RU[j]) {
@@ -64,13 +64,13 @@ void __fastcall Tregistration_menu::registration_buttonClick(TObject *Sender){
 		}
 	}
 
-	//проверка на корректность ввода
+	//РїСЂРѕРІРµСЂРєР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРѕРґР°
 	if (this -> login -> Text == "" || this -> password -> Text == ""){
-		ShowMessage("Введите данные");
+		ShowMessage("Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ");
 	}
 
 	else if (check_RU_in_l == true || check_RU_in_p == true){
-		ShowMessage("Есть русские буквы");
+		ShowMessage("Р•СЃС‚СЊ СЂСѓСЃСЃРєРёРµ Р±СѓРєРІС‹");
 	}
 
 	else{
@@ -80,17 +80,17 @@ void __fastcall Tregistration_menu::registration_buttonClick(TObject *Sender){
 		AnsiString text = "Login: " + this -> login -> Text + " | " + "Password: " + this -> password -> Text;
 
 //		AnsiString separate_login = "Login: " + this -> login -> Text + " | ";
-//		char* separate_login_с = str_to_char(separate_login);
+//		char* separate_login_СЃ = str_to_char(separate_login);
 
-		char* text_с = str_to_char(text);
+		char* text_СЃ = str_to_char(text);
 
         AnsiString login_str;
 		for (int i = 0; i < text.Length(); i++) {
-			if (text_с[i] == '|'){
+			if (text_СЃ[i] == '|'){
 				break;
 			}
 
-			else if (text_с[i] == ':'){
+			else if (text_СЃ[i] == ':'){
 				for (int j = 0; j < i - 7; j++) {
 
 				}
@@ -108,14 +108,14 @@ void __fastcall Tregistration_menu::registration_buttonClick(TObject *Sender){
 			getline(examination, line_txt);
 
 			if (line_txt == text.c_str()){
-				ShowMessage("Такой пользователь уже есть");
+				ShowMessage("РўР°РєРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ РµСЃС‚СЊ");
 				check_txt = false;
 				break;
 			}
 		}
 
 		if(!examination.is_open()) {
-			ShowMessage("Что-то с файлом");
+			ShowMessage("Р§С‚Рѕ-С‚Рѕ СЃ С„Р°Р№Р»РѕРј");
 		}
 
 		else if(check_txt == false){
@@ -134,4 +134,3 @@ void __fastcall Tregistration_menu::registration_buttonClick(TObject *Sender){
 	}
 }
 //---------------------------------------------------------------------------
-
